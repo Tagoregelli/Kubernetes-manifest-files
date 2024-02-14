@@ -1,0 +1,23 @@
+apiVersion: v1 
+kind: Pod
+metadata:
+  name: redis-pod-cm-env
+  labels:
+    name: myapp
+spec:
+  containers:
+  - name: redis-container
+    image: redis 
+    env: 
+      - name: first-file.txt
+        valueFrom:
+          configMapKeyRef:
+            name: redis-confgmap-env
+            key: file-1.txt
+      - name: second-file.txt
+        valueFrom:
+          configMapKeyRef:
+            name: redis-confgmap-env
+            key: file-2.txt
+        
+    
